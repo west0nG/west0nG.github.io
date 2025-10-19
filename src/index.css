@@ -1,0 +1,218 @@
+/* ================================
+   CSS 变量 - 方便统一管理颜色和样式
+   ================================ */
+   :root {
+    /* 主题色 */
+    --primary-color: #646cff;
+    --primary-hover: #535bf2;
+    
+    /* 背景色 */
+    --bg-color: #ffffff;
+    --bg-secondary: #f9f9f9;
+    
+    /* 文字色 */
+    --text-color: #213547;
+    --text-secondary: #646464;
+    
+    /* 深色模式的颜色（可选） */
+    --dark-bg: #1a1a1a;
+    --dark-text: #ffffff;
+    
+    /* 其他 */
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    /* 字体 */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                   'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 
+                   'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
+                   sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+  }
+  
+  /* ================================
+     CSS 重置和基础样式
+     ================================ */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth; /* 平滑滚动 */
+  }
+  
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* ================================
+     基础元素样式
+     ================================ */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.5;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+  h4 { font-size: 1.5rem; }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1rem; }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  a:hover {
+    color: var(--primary-hover);
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  ul, ol {
+    list-style-position: inside;
+    margin-bottom: 1rem;
+  }
+  
+  code {
+    font-family: var(--font-mono);
+    background-color: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  
+  /* ================================
+     按钮基础样式
+     ================================ */
+  button {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* ================================
+     表单基础样式
+     ================================ */
+  input, textarea, select {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    width: 100%;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+  }
+  
+  /* ================================
+     工具类
+     ================================ */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-1 { margin-top: 0.5rem; }
+  .mt-2 { margin-top: 1rem; }
+  .mt-3 { margin-top: 1.5rem; }
+  .mt-4 { margin-top: 2rem; }
+  
+  .mb-1 { margin-bottom: 0.5rem; }
+  .mb-2 { margin-bottom: 1rem; }
+  .mb-3 { margin-bottom: 1.5rem; }
+  .mb-4 { margin-bottom: 2rem; }
+  
+  /* ================================
+     响应式设计
+     ================================ */
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    
+    .container {
+      padding: 0 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+  }
+  
+  /* ================================
+     深色模式（可选）
+     ================================ */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #1a1a1a;
+      --bg-secondary: #2a2a2a;
+      --text-color: #ffffff;
+      --text-secondary: #b0b0b0;
+    }
+    
+    input, textarea, select {
+      background-color: var(--bg-secondary);
+      color: var(--text-color);
+      border-color: #444;
+    }
+  }
