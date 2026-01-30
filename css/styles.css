@@ -5,7 +5,6 @@
 }
 
 
-
 html {
     scroll-behavior: smooth;  /* 平滑滚动 */
 }
@@ -23,6 +22,11 @@ body {
 .section {
     padding-top: 80px;
     padding-bottom: 80px;
+}
+
+.section-nav {
+    padding-top: 80px;
+    padding-bottom: 0;
 }
 
 /* 为有 id 的 section 设置 scroll-margin，确保锚点跳转位置正确 */
@@ -122,6 +126,39 @@ body {
     border-radius: 16px;
     justify-content: flex-start;
     gap: 8px;
+    text-decoration: none;  /* 移除链接下划线 */
+    color: inherit;  /* 继承文字颜色 */
+    cursor: pointer;  /* 鼠标指针样式 */
+    transition: transform 0.2s, box-shadow 0.2s, background-image 0.3s;  /* 添加过渡效果 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card-featured:hover {
+    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));  /* 使用CSS变量，可在HTML中通过style="--hover-bg-image: url('...')"设置 */
+}
+
+/*
+.project-card-featured:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);  
+    z-index: 0;
+    border-radius: 16px;
+}
+*/
+
+.project-card-featured .card-title,
+.project-card-featured .card-subtitle {
+    position: relative;
+    z-index: 1;  /* 确保文字在遮罩层之上 */
 }
 
 .project-card-featured-secondary {
@@ -135,7 +172,41 @@ body {
     justify-content: flex-start;
     gap: 8px;
     flex-direction: column;
+    text-decoration: none;  /* 移除链接下划线 */
+    color: inherit;  /* 继承文字颜色 */
+    cursor: pointer;  /* 鼠标指针样式 */
+    transition: transform 0.2s, box-shadow 0.2s, background-image 0.3s;  /* 添加过渡效果 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
 }
+
+.project-card-featured-secondary:hover {
+    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));  /* 使用CSS变量，可在HTML中通过style="--hover-bg-image: url('...')"设置 */
+}
+
+/*
+.project-card-featured-secondary:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); 
+    z-index: 0;
+    border-radius: 16px;
+}
+*/
+
+.project-card-featured-secondary .card-title,
+.project-card-featured-secondary .card-subtitle {
+    position: relative;
+    z-index: 1;  /* 确保文字在遮罩层之上 */
+}
+
 
 .project-card-normal {
     display: flex;
@@ -148,7 +219,42 @@ body {
     justify-content: flex-start;
     gap: 8px;
     flex-direction: column;
+    text-decoration: none;  /* 移除链接下划线 */
+    color: inherit;  /* 继承文字颜色 */
+    cursor: pointer;  /* 鼠标指针样式 */
+    transition: transform 0.2s, box-shadow 0.2s, background-image 0.3s;  /* 添加过渡效果 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
 }
+
+.project-card-normal:hover {
+    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));  /* 使用CSS变量，可在HTML中通过style="--hover-bg-image: url('...')"设置 */
+}
+
+/*
+.project-card-normal:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+    border-radius: 16px;
+}
+*/
+
+
+.project-card-normal .card-title,
+.project-card-normal .card-subtitle {
+    position: relative;
+    z-index: 1;  /* 确保文字在遮罩层之上 */
+}
+
 
 .project-card-gap {
     height: 16px;
@@ -196,6 +302,9 @@ body {
     gap: 16px;
     justify-content: flex-start;
     align-items: center;
+    text-decoration: none;  /* 移除链接下划线 */
+    color: inherit;  /* 继承文字颜色 */
+    cursor: pointer;  /* 鼠标指针样式 */
 }
 
 .connect-container {
@@ -214,4 +323,6 @@ body {
     font-weight: 300;
     margin: 0;
     color: #878787;
+    
 }
+
