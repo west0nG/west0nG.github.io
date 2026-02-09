@@ -109,17 +109,24 @@ body {
 }
 
 .project-container {
-
-    display: flex;
+    display: grid;
     gap: 16px;
-    justify-content: space-between;
     width: 100%; 
+}
+
+/* 包含featured和featured-secondary卡片的容器：7:5的比例 */
+.project-container:has(.project-card-featured) {
+    grid-template-columns: 7fr 5fr;
+}
+
+/* 包含三个normal卡片的容器：三等分 */
+.project-container:has(.project-card-normal):not(:has(.project-card-featured)) {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .project-card-featured {
     display: flex;
     flex-direction: column;  
-    flex: 7;  
     height: 400px;
     border: 1px solid #E5E7EB;
     padding: 16px;
@@ -129,16 +136,40 @@ body {
     text-decoration: none;  /* 移除链接下划线 */
     color: inherit;  /* 继承文字颜色 */
     cursor: pointer;  /* 鼠标指针样式 */
-    transition: transform 0.2s, box-shadow 0.2s, background-image 0.3s;  /* 添加过渡效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 添加过渡效果 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* 使用伪元素实现平滑的背景图片切换 */
+.project-card-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 16px;
+    z-index: 0;
 }
 
 .project-card-featured:hover {
-    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));  /* 使用CSS变量，可在HTML中通过style="--hover-bg-image: url('...')"设置 */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.project-card-featured:hover::before {
+    opacity: 1;
 }
 
 /*
@@ -159,11 +190,19 @@ body {
 .project-card-featured .card-subtitle {
     position: relative;
     z-index: 1;  /* 确保文字在遮罩层之上 */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-card-featured:hover .card-title {
+    transform: translateY(-2px);
+}
+
+.project-card-featured:hover .card-subtitle {
+    opacity: 0.9;
 }
 
 .project-card-featured-secondary {
     display: flex;
-    flex: 5;
     height: 400px;
     border: 1px solid #E5E7EB;
     border-radius: 16px;
@@ -175,16 +214,40 @@ body {
     text-decoration: none;  /* 移除链接下划线 */
     color: inherit;  /* 继承文字颜色 */
     cursor: pointer;  /* 鼠标指针样式 */
-    transition: transform 0.2s, box-shadow 0.2s, background-image 0.3s;  /* 添加过渡效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 添加过渡效果 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* 使用伪元素实现平滑的背景图片切换 */
+.project-card-featured-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 16px;
+    z-index: 0;
 }
 
 .project-card-featured-secondary:hover {
-    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));  /* 使用CSS变量，可在HTML中通过style="--hover-bg-image: url('...')"设置 */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.project-card-featured-secondary:hover::before {
+    opacity: 1;
 }
 
 /*
@@ -205,13 +268,21 @@ body {
 .project-card-featured-secondary .card-subtitle {
     position: relative;
     z-index: 1;  /* 确保文字在遮罩层之上 */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-card-featured-secondary:hover .card-title {
+    transform: translateY(-2px);
+}
+
+.project-card-featured-secondary:hover .card-subtitle {
+    opacity: 0.9;
 }
 
 
 .project-card-normal {
     display: flex;
     height: 400px;
-    flex: 1;
     border: 1px solid #E5E7EB;
     border-radius: 16px;
     padding: 16px;
@@ -222,16 +293,40 @@ body {
     text-decoration: none;  /* 移除链接下划线 */
     color: inherit;  /* 继承文字颜色 */
     cursor: pointer;  /* 鼠标指针样式 */
-    transition: transform 0.2s, box-shadow 0.2s, background-image 0.3s;  /* 添加过渡效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 添加过渡效果 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* 使用伪元素实现平滑的背景图片切换 */
+.project-card-normal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 16px;
+    z-index: 0;
 }
 
 .project-card-normal:hover {
-    background-image: var(--hover-bg-image, url('path/to/your/image.jpg'));  /* 使用CSS变量，可在HTML中通过style="--hover-bg-image: url('...')"设置 */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.project-card-normal:hover::before {
+    opacity: 1;
 }
 
 /*
@@ -253,6 +348,15 @@ body {
 .project-card-normal .card-subtitle {
     position: relative;
     z-index: 1;  /* 确保文字在遮罩层之上 */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-card-normal:hover .card-title {
+    transform: translateY(-2px);
+}
+
+.project-card-normal:hover .card-subtitle {
+    opacity: 0.9;
 }
 
 
