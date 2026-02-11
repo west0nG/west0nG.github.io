@@ -6,7 +6,7 @@
 
 
 html {
-    scroll-behavior: smooth;  /* 平滑滚动 */
+    scroll-behavior: smooth;  /* Smooth scrolling */
 }
 
 html, body {
@@ -14,7 +14,7 @@ html, body {
     padding: 0;
 }
 
-/* 页面切换动画 */
+/* Page transition animation */
 @keyframes pageFadeIn {
     from {
         opacity: 0;
@@ -41,16 +41,16 @@ body {
     padding-bottom: 0;
 }
 
-/* 为有 id 的 section 设置 scroll-margin，确保锚点跳转位置正确 */
+/* Set scroll-margin for sections with id to ensure correct anchor jump position */
 #about,
 #projects,
 #contact {
-    scroll-margin-top: 80px;  /* 补偿 section 的 padding-top */
+    scroll-margin-top: 80px;  /* Compensate for section padding-top */
 }
 
 .section-last {
-    padding-bottom: 0 !important;  /* 最后一个 section 底部没有 padding */
-    margin-bottom: 0 !important;   /* 确保没有 margin */
+    padding-bottom: 0 !important;  /* Last section has no bottom padding */
+    margin-bottom: 0 !important;   /* Ensure no margin */
 }
 
 .container {
@@ -75,9 +75,9 @@ body {
     height: fit-content;
     font-size: 16px;
     font-weight: 500;
-    text-decoration: none;  /* 移除链接下划线 */
-    color: inherit;  /* 继承文字颜色 */
-    cursor: pointer;  /* 鼠标指针样式 */
+    text-decoration: none;  /* Remove link underline */
+    color: inherit;  /* Inherit text color */
+    cursor: pointer;  /* Pointer cursor style */
 }
 
 .nav-button:hover {
@@ -97,7 +97,7 @@ body {
     gap: 20px;  
 }
 
-/* 项目页：主标题与右侧 caption 同一行、对齐 */
+/* Project page: main title and right caption on same line, aligned */
 .hero-title-row {
     display: flex;
     align-items: baseline;
@@ -110,7 +110,7 @@ body {
     font-size: 36px;
     font-weight: 550;  /* semi-bold */
     letter-spacing: -0.04em;
-    margin: 0;  /* 移除默认 margin */
+    margin: 0;  /* Remove default margin */
 }
 
 .hero-caption {
@@ -125,14 +125,14 @@ body {
 .hero-subtitle {
     font-size: 20px;
     font-weight: 400;
-    margin: 0;  /* 移除默认 margin */
+    margin: 0;  /* Remove default margin */
     letter-spacing: -0.04em;
 }
 
 .hero-text {
     font-size: 16px;
     font-weight: 300;
-    margin: 0;  /* 移除默认 margin */
+    margin: 0;  /* Remove default margin */
     line-height: 1.5;
     letter-spacing: -0.04em;
 }
@@ -143,12 +143,12 @@ body {
     width: 100%; 
 }
 
-/* 包含featured和featured-secondary卡片的容器：7:5的比例 */
+/* Container with featured and featured-secondary cards: 7:5 ratio */
 .project-container:has(.project-card-featured) {
     grid-template-columns: 7fr 5fr;
 }
 
-/* 包含三个normal卡片的容器：三等分 */
+/* Container with three normal cards: equal thirds */
 .project-container:has(.project-card-normal):not(:has(.project-card-featured)) {
     grid-template-columns: repeat(3, 1fr);
 }
@@ -162,10 +162,10 @@ body {
     border-radius: 16px;
     justify-content: flex-start;
     gap: 8px;
-    text-decoration: none;  /* 移除链接下划线 */
-    color: inherit;  /* 继承文字颜色 */
-    cursor: pointer;  /* 鼠标指针样式 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 添加过渡效果 */
+    text-decoration: none;  /* Remove link underline */
+    color: inherit;  /* Inherit text color */
+    cursor: pointer;  /* Pointer cursor style */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Add transition effect */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -174,7 +174,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* 使用伪元素实现平滑的背景图片切换 */
+/* Use pseudo-element for smooth background image transition */
 .project-card-featured::before {
     content: '';
     position: absolute;
@@ -218,7 +218,7 @@ body {
 .project-card-featured .card-title,
 .project-card-featured .card-subtitle {
     position: relative;
-    z-index: 1;  /* 确保文字在遮罩层之上 */
+    z-index: 1;  /* Ensure text is above overlay */
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -240,10 +240,10 @@ body {
     justify-content: flex-start;
     gap: 8px;
     flex-direction: column;
-    text-decoration: none;  /* 移除链接下划线 */
-    color: inherit;  /* 继承文字颜色 */
-    cursor: pointer;  /* 鼠标指针样式 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 添加过渡效果 */
+    text-decoration: none;  /* Remove link underline */
+    color: inherit;  /* Inherit text color */
+    cursor: pointer;  /* Pointer cursor style */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Add transition effect */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -252,7 +252,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* 使用伪元素实现平滑的背景图片切换 */
+/* Use pseudo-element for smooth background image transition */
 .project-card-featured-secondary::before {
     content: '';
     position: absolute;
@@ -296,7 +296,7 @@ body {
 .project-card-featured-secondary .card-title,
 .project-card-featured-secondary .card-subtitle {
     position: relative;
-    z-index: 1;  /* 确保文字在遮罩层之上 */
+    z-index: 1;  /* Ensure text is above overlay */
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -319,10 +319,10 @@ body {
     justify-content: flex-start;
     gap: 8px;
     flex-direction: column;
-    text-decoration: none;  /* 移除链接下划线 */
-    color: inherit;  /* 继承文字颜色 */
-    cursor: pointer;  /* 鼠标指针样式 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 添加过渡效果 */
+    text-decoration: none;  /* Remove link underline */
+    color: inherit;  /* Inherit text color */
+    cursor: pointer;  /* Pointer cursor style */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Add transition effect */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -331,7 +331,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* 使用伪元素实现平滑的背景图片切换 */
+/* Use pseudo-element for smooth background image transition */
 .project-card-normal::before {
     content: '';
     position: absolute;
@@ -376,7 +376,7 @@ body {
 .project-card-normal .card-title,
 .project-card-normal .card-subtitle {
     position: relative;
-    z-index: 1;  /* 确保文字在遮罩层之上 */
+    z-index: 1;  /* Ensure text is above overlay */
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -444,9 +444,9 @@ body {
     gap: 16px;
     justify-content: flex-start;
     align-items: center;
-    text-decoration: none;  /* 移除链接下划线 */
-    color: inherit;  /* 继承文字颜色 */
-    cursor: pointer;  /* 鼠标指针样式 */
+    text-decoration: none;  /* Remove link underline */
+    color: inherit;  /* Inherit text color */
+    cursor: pointer;  /* Pointer cursor style */
 }
 
 .connect-container {
@@ -465,6 +465,227 @@ body {
     font-weight: 300;
     margin: 0;
     color: #878787;
-    
+}
+
+/* ========== Responsive: under 768px (tablet) ========== */
+@media (max-width: 768px) {
+    .container {
+        margin: 0 24px;
+    }
+
+    .section {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .section-nav {
+        padding-top: 48px;
+    }
+
+    #about,
+    #projects,
+    #contact {
+        scroll-margin-top: 48px;
+    }
+
+    .nav-container {
+        gap: 24px;
+    }
+
+    .nav-button,
+    .nav-font {
+        font-size: 14px;
+    }
+
+    .hero {
+        gap: 16px;
+    }
+
+    .hero-title-row {
+        gap: 12px;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-caption {
+        font-size: 18px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+    /* Featured + secondary: stack vertically on tablet */
+    .project-container:has(.project-card-featured) {
+        grid-template-columns: 1fr;
+    }
+
+    /* Three normal cards: 2 columns on tablet */
+    .project-container:has(.project-card-normal):not(:has(.project-card-featured)) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card-featured,
+    .project-card-featured-secondary,
+    .project-card-normal {
+        height: 320px;
+        padding: 12px;
+    }
+
+    .project-title {
+        font-size: 18px;
+    }
+
+    .card-title {
+        font-size: 15px;
+    }
+
+    .card-subtitle {
+        font-size: 13px;
+    }
+
+    .connect-title {
+        font-size: 18px;
+    }
+
+    .connect-logo {
+        width: 28px;
+        height: 28px;
+    }
+
+    .connnect-text {
+        font-size: 15px;
+    }
+
+    .footer-text {
+        font-size: 13px;
+    }
+}
+
+/* ========== Responsive: under 520px (mobile) ========== */
+@media (max-width: 520px) {
+    .container {
+        margin: 0 16px;
+    }
+
+    .section {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    .section-nav {
+        padding-top: 32px;
+    }
+
+    #about,
+    #projects,
+    #contact {
+        scroll-margin-top: 32px;
+    }
+
+    .nav-container {
+        gap: 16px;
+    }
+
+    .nav-button,
+    .nav-font {
+        font-size: 13px;
+    }
+
+    .hero {
+        gap: 12px;
+    }
+
+    .hero-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-caption {
+        font-size: 16px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero-text {
+        font-size: 14px;
+    }
+
+    .project-container {
+        gap: 12px;
+    }
+
+    /* All project grids: single column on mobile */
+    .project-container:has(.project-card-featured) {
+        grid-template-columns: 1fr;
+    }
+
+    .project-container:has(.project-card-normal):not(:has(.project-card-featured)) {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card-featured,
+    .project-card-featured-secondary,
+    .project-card-normal {
+        height: 280px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .project-card-featured::before,
+    .project-card-featured-secondary::before,
+    .project-card-normal::before {
+        border-radius: 12px;
+    }
+
+    .project-title {
+        font-size: 16px;
+    }
+
+    .card-title {
+        font-size: 14px;
+    }
+
+    .card-subtitle {
+        font-size: 12px;
+    }
+
+    .connect-title {
+        font-size: 16px;
+    }
+
+    .connect-logo {
+        width: 24px;
+        height: 24px;
+    }
+
+    .connect-button {
+        gap: 12px;
+    }
+
+    .connect-container {
+        gap: 12px;
+    }
+
+    .connnect-text {
+        font-size: 14px;
+    }
+
+    .footer-text {
+        font-size: 12px;
+    }
 }
 
