@@ -186,6 +186,56 @@ body {
     letter-spacing: -0.04em;
 }
 
+.hover-word-cycle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.28em;
+    margin: 0 -0.02em;
+    border-radius: 0.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 0.25s ease, background-color 0.25s ease, color 0.25s ease, font-weight 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hover-word-cycle:hover {
+    width: 4.8ch;
+    background-color: #2b7cff;
+    color: transparent;
+    font-weight: 700;
+    box-shadow: 0 0 0 1px rgba(43, 124, 255, 0.18), 0 6px 14px rgba(43, 124, 255, 0.28);
+    animation: hoverWordWidth 8s ease-in-out infinite;
+}
+
+.hover-word-cycle:hover::after {
+    content: "Ship";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: hoverWordCycle 8s steps(1, end) infinite;
+}
+
+@keyframes hoverWordCycle {
+    0%, 24.99% { content: "Ship"; }
+    25%, 49.99% { content: "Build"; }
+    50%, 74.99% { content: "Fix"; }
+    75%, 100% { content: "Explore"; }
+}
+
+@keyframes hoverWordWidth {
+    0%, 24.99% { width: 4.8ch; }   /* Ship */
+    25%, 49.99% { width: 5.9ch; }  /* Build */
+    50%, 74.99% { width: 3.6ch; }  /* Fix */
+    75%, 100% { width: 7.8ch; }    /* Explore */
+}
+
 .hero-text {
     font-size: 16px;
     font-weight: 300;
