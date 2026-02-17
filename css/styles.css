@@ -620,6 +620,26 @@ body {
     stroke: var(--bg-color);
 }
 
+.link-icon-weixin {
+    background: #000;
+    border-radius: 4px;
+}
+.link-icon-weixin rect {
+    fill: #000;
+}
+.link-icon-weixin path {
+    fill: #fff;
+}
+[data-theme="dark"] .link-icon-weixin {
+    background: var(--text-color);
+}
+[data-theme="dark"] .link-icon-weixin rect {
+    fill: var(--text-color);
+}
+[data-theme="dark"] .link-icon-weixin path {
+    fill: var(--bg-color);
+}
+
 .link-item-text {
     font-size: 16px;
     font-weight: 400;
