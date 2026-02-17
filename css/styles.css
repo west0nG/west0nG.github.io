@@ -190,22 +190,23 @@ body {
     position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 0.28em;
-    margin: 0 -0.02em;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
     border-radius: 0.3em;
     white-space: nowrap;
     overflow: hidden;
-    transition: width 0.25s ease, background-color 0.25s ease, color 0.25s ease, font-weight 0.25s ease, box-shadow 0.25s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, font-weight 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hover-word-cycle:hover {
-    width: 4.8ch;
+    width: 4.3ch;
+    padding: 0 0.12em;
     background-color: #2b7cff;
     color: transparent;
     font-weight: 700;
     box-shadow: 0 0 0 1px rgba(43, 124, 255, 0.18), 0 6px 14px rgba(43, 124, 255, 0.28);
-    animation: hoverWordWidth 8s ease-in-out infinite;
+    animation: hoverWordWidth 4s ease-in-out infinite;
 }
 
 .hover-word-cycle:hover::after {
@@ -214,12 +215,13 @@ body {
     inset: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 0 0.12em;
     color: #ffffff;
     font-weight: 700;
     white-space: nowrap;
     pointer-events: none;
-    animation: hoverWordCycle 8s steps(1, end) infinite;
+    animation: hoverWordCycle 4s steps(1, end) infinite, hoverWordFade 4s linear infinite;
 }
 
 @keyframes hoverWordCycle {
@@ -230,10 +232,22 @@ body {
 }
 
 @keyframes hoverWordWidth {
-    0%, 24.99% { width: 4.8ch; }   /* Ship */
-    25%, 49.99% { width: 5.9ch; }  /* Build */
-    50%, 74.99% { width: 3.6ch; }  /* Fix */
-    75%, 100% { width: 7.8ch; }    /* Explore */
+    0%, 18% { width: 4.3ch; }      /* Ship hold */
+    25%, 43% { width: 5.2ch; }     /* Build hold */
+    50%, 68% { width: 3.2ch; }     /* Fix hold */
+    75%, 93% { width: 7.0ch; }     /* Explore hold */
+    100% { width: 4.3ch; }         /* Loop back to Ship */
+}
+
+@keyframes hoverWordFade {
+    0%, 20%, 25%, 45%, 50%, 70%, 75%, 95%, 100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    22.5%, 47.5%, 72.5%, 97.5% {
+        opacity: 0.55;
+        transform: translateY(-0.03em);
+    }
 }
 
 .hero-text {
