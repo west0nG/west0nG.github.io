@@ -22,13 +22,15 @@
 }
 
 
-html {
-    scroll-behavior: smooth;  /* Smooth scrolling */
-}
-
 html, body {
     margin: 0;
     padding: 0;
+}
+
+/* Fullpage home: lock viewport */
+body.fullpage {
+    overflow: hidden;
+    height: 100%;
 }
 
 /* Page transition animation */
@@ -45,37 +47,89 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    animation: pageFadeIn 0.4s ease-in-out;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Fullpage scroll wrapper */
+.sections-wrapper {
+    will-change: transform;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 
 .section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 0;
+    position: relative;
+}
+
+/* Sub-pages: center all content as one block */
+body:not(.fullpage) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+body:not(.fullpage) .section {
+    padding-top: 0;
+}
+
+body:not(.fullpage) .section + .section {
+    padding-top: 24px;
+}
+
+/* Fullpage home: fixed height sections */
+.fullpage .section {
+    height: 100vh;
+    min-height: unset;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Section content entrance/exit animation (fullpage home only) */
+.fullpage .section > * {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.fullpage .section.section-active > * {
+    opacity: 1;
+    transition: opacity 0.5s ease 0.25s;
+}
+
+/* Nav active state */
+.nav-button.nav-active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Projects section: vertically centered */
+#projects {
+    align-items: center;
 }
 
 .section-nav {
-    padding-top: 80px;
-    padding-bottom: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--bg-color);
+    padding-top: 32px;
+    padding-bottom: 20px;
+    transition: background-color 0.3s ease;
 }
 
-/* Set scroll-margin for sections with id to ensure correct anchor jump position */
-#about,
-#projects,
-#contact {
-    scroll-margin-top: 80px;  /* Compensate for section padding-top */
-}
-
-.section-last {
-    padding-bottom: 0 !important;  /* Last section has no bottom padding */
-    margin-bottom: 0 !important;   /* Ensure no margin */
-}
 
 .container {
-    margin: 0 160px;  
+    margin: 0 160px;
+    flex: 1;
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
 .project-section-container {
@@ -309,7 +363,7 @@ body {
 .project-card-featured {
     display: flex;
     flex-direction: column;  
-    height: 400px;
+    height: 260px;
     border: 1px solid var(--border-color);
     padding: 16px;
     border-radius: 16px;
@@ -385,7 +439,7 @@ body {
 
 .project-card-featured-secondary {
     display: flex;
-    height: 400px;
+    height: 260px;
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 16px;
@@ -464,7 +518,7 @@ body {
 
 .project-card-normal {
     display: flex;
-    height: 400px;
+    height: 260px;
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 16px;
@@ -620,6 +674,25 @@ body {
     color: var(--text-secondary);
 }
 
+/* Contact section: column layout with footer at bottom */
+#contact {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#contact .connect-container {
+    flex: 1;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#contact .footer-text {
+    padding-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
 .link-container {
     display: flex;
     flex-direction: column;
@@ -756,18 +829,12 @@ body {
     }
 
     .section {
-        padding-top: 48px;
-        padding-bottom: 48px;
+        padding-top: 60px;
     }
 
     .section-nav {
-        padding-top: 48px;
-    }
-
-    #about,
-    #projects,
-    #contact {
-        scroll-margin-top: 48px;
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
 
     .nav-container {
@@ -816,7 +883,7 @@ body {
     .project-card-featured,
     .project-card-featured-secondary,
     .project-card-normal {
-        height: 320px;
+        height: 220px;
         padding: 12px;
     }
 
@@ -857,18 +924,12 @@ body {
     }
 
     .section {
-        padding-top: 32px;
-        padding-bottom: 32px;
+        padding-top: 60px;
     }
 
     .section-nav {
-        padding-top: 32px;
-    }
-
-    #about,
-    #projects,
-    #contact {
-        scroll-margin-top: 32px;
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 
     .nav-container {
@@ -922,7 +983,7 @@ body {
     .project-card-featured,
     .project-card-featured-secondary,
     .project-card-normal {
-        height: 280px;
+        height: 200px;
         padding: 12px;
         border-radius: 12px;
     }
