@@ -185,18 +185,6 @@ body:not(.fullpage) .section + .section {
     height: 18px;
 }
 
-.theme-toggle .icon-moon {
-    display: none;
-}
-
-[data-theme="dark"] .theme-toggle .icon-sun {
-    display: none;
-}
-
-[data-theme="dark"] .theme-toggle .icon-moon {
-    display: block;
-}
-
 .theme-toggle:hover {
     opacity: 0.6;
 }
@@ -222,6 +210,13 @@ body:not(.fullpage) .section + .section {
     font-weight: 550;  /* semi-bold */
     letter-spacing: -0.04em;
     margin: 0;  /* Remove default margin */
+}
+
+/* Cormorant Garamond serif font for index page hero title only */
+body.fullpage .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 44px;
 }
 
 .hero-caption {
@@ -253,69 +248,38 @@ body:not(.fullpage) .section + .section {
     transition: background-color 0.2s ease, color 0.2s ease, font-weight 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hover-word-cycle:hover {
-    width: 4.3ch;
+/* Active state — toggled by JS via .cycling class */
+.hover-word-cycle.cycling {
     padding: 0 0.12em;
     background-color: #2b7cff;
     color: transparent;
     font-weight: 700;
     box-shadow: 0 0 0 1px rgba(43, 124, 255, 0.18), 0 6px 14px rgba(43, 124, 255, 0.28);
-    background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.28) 50%, rgba(255, 255, 255, 0.1) 100%);
+    background-image: linear-gradient(115deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0.1) 100%);
     background-size: 240% 100%;
-    animation: hoverWordWidth 6s ease-in-out infinite, hoverWordGlow 3s ease-in-out infinite, hoverWordShimmer 3.3s linear infinite;
+    animation: hoverWordGlow 3s ease-in-out infinite, hoverWordShimmer 3.3s linear infinite;
+    transition: width 0.3s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hover-word-cycle:hover::after {
-    content: "Ship";
+/* Overlay span created by JS */
+.hover-word-cycle .cycle-text {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
     color: #ffffff;
     font-weight: 700;
     white-space: nowrap;
     pointer-events: none;
-    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
-    will-change: transform, opacity, filter;
-    animation: hoverWordCycle 6s steps(1, end) infinite, hoverWordFade 6s ease-in-out infinite;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-@keyframes hoverWordCycle {
-    0%, 24.99% { content: "Ship"; }
-    25%, 49.99% { content: "Build"; }
-    50%, 74.99% { content: "Fix"; }
-    75%, 100% { content: "Explore"; }
-}
-
-@keyframes hoverWordWidth {
-    0%, 18% { width: 4.3ch; }      /* Ship hold */
-    25%, 43% { width: 5.2ch; }     /* Build hold */
-    50%, 68% { width: 3.2ch; }     /* Fix hold */
-    75%, 93% { width: 7.0ch; }     /* Explore hold */
-    100% { width: 4.3ch; }         /* Loop back to Ship */
-}
-
-@keyframes hoverWordFade {
-    0%, 18%, 25%, 43%, 50%, 68%, 75%, 93%, 100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
-    }
-    20.5%, 45.5%, 70.5%, 95.5% {
-        opacity: 0.35;
-        transform: translateY(-0.06em) scale(0.97);
-        filter: blur(0.8px);
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
-    }
-    22.5%, 47.5%, 72.5%, 97.5% {
-        opacity: 0.88;
-        transform: translateY(0.02em) scale(1.02);
-        filter: blur(0);
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.26);
-    }
+/* Fade-out class for word transitions */
+.hover-word-cycle .cycle-text.fade-out {
+    opacity: 0.3;
+    transform: translateY(-0.06em) scale(0.97);
+    filter: blur(0.8px);
 }
 
 @keyframes hoverWordGlow {
@@ -408,20 +372,6 @@ body:not(.fullpage) .section + .section {
     opacity: 1;
 }
 
-/*
-.project-card-featured:hover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);  
-    z-index: 0;
-    border-radius: 16px;
-}
-*/
-
 .project-card-featured .card-title,
 .project-card-featured .card-subtitle {
     position: relative;
@@ -443,7 +393,6 @@ body:not(.fullpage) .section + .section {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 16px;
-    border-radius: 16px;
     justify-content: flex-start;
     gap: 8px;
     flex-direction: column;
@@ -486,20 +435,6 @@ body:not(.fullpage) .section + .section {
     opacity: 1;
 }
 
-/*
-.project-card-featured-secondary:hover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); 
-    z-index: 0;
-    border-radius: 16px;
-}
-*/
-
 .project-card-featured-secondary .card-title,
 .project-card-featured-secondary .card-subtitle {
     position: relative;
@@ -522,7 +457,6 @@ body:not(.fullpage) .section + .section {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 16px;
-    border-radius: 16px;
     justify-content: flex-start;
     gap: 8px;
     flex-direction: column;
@@ -564,21 +498,6 @@ body:not(.fullpage) .section + .section {
 .project-card-normal:hover::before {
     opacity: 1;
 }
-
-/*
-.project-card-normal:hover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 0;
-    border-radius: 16px;
-}
-*/
-
 
 .project-card-normal .card-title,
 .project-card-normal .card-subtitle {
@@ -643,7 +562,7 @@ body:not(.fullpage) .section + .section {
 
 .connnect-text {
     font-size: 16px;
-    font-weight: 300px;
+    font-weight: 300;
 }
 
 .connect-button {
@@ -858,6 +777,10 @@ body:not(.fullpage) .section + .section {
         font-size: 28px;
     }
 
+    body.fullpage .hero-title {
+        font-size: 34px;
+    }
+
     .hero-caption {
         font-size: 18px;
     }
@@ -953,6 +876,10 @@ body:not(.fullpage) .section + .section {
 
     .hero-title {
         font-size: 24px;
+    }
+
+    body.fullpage .hero-title {
+        font-size: 30px;
     }
 
     .hero-caption {
