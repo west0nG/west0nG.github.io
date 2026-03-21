@@ -1,0 +1,57 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border-radius: 0.3em;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease, font-weight 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cycling {
+  padding: 0 0.12em;
+  background-color: #2b7cff;
+  color: transparent;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px rgba(43, 124, 255, 0.18), 0 6px 14px rgba(43, 124, 255, 0.28);
+  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.28) 50%, rgba(255, 255, 255, 0.1) 100%);
+  background-size: 240% 100%;
+  animation: glow 3s ease-in-out infinite, shimmer 3.3s linear infinite;
+  transition: width 0.3s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cycleText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.fadeOut {
+  opacity: 0.3;
+  transform: translateY(-0.06em) scale(0.97);
+  filter: blur(0.8px);
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(43, 124, 255, 0.18), 0 6px 14px rgba(43, 124, 255, 0.28);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(43, 124, 255, 0.28), 0 8px 20px rgba(43, 124, 255, 0.38);
+  }
+}
+
+@keyframes shimmer {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}

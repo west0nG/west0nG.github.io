@@ -1,1 +1,46 @@
-/* Global styles will be added in Task 2 */
+:root {
+  --bg-color: #f7f7f7;
+  --text-color: #000000;
+  --text-secondary: #878787;
+  --border-color: #E5E7EB;
+  --card-shadow: rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --text-secondary: #9e9e9e;
+  --border-color: #2a2a2a;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: rgba(0, 0, 0, 0.4);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.fullpage {
+  overflow: hidden;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
