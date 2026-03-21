@@ -1,0 +1,224 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.section + .section {
+  padding-top: 24px;
+}
+
+.container {
+  margin: 0 160px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroTitleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.heroTitle {
+  font-size: 36px;
+  font-weight: 550;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.heroCaption {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: -0.04em;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.heroSubtitle {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.heroText {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.linkTitle {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--text-color);
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+}
+
+.linkItem {
+  position: relative;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.linkItemLogo {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  flex-shrink: 0;
+}
+
+.linkItemLogo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.linkItemText {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  color: var(--text-color);
+  line-height: 1.2;
+  position: relative;
+}
+
+.linkItemText::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--text-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.linkItem:hover .linkItemText::after {
+  transform: scaleX(1);
+}
+
+.linkIconCanva {
+  background: #000;
+  border-radius: 4px;
+}
+
+.linkIconCanva rect {
+  fill: #000;
+}
+
+.linkIconCanva path {
+  stroke: #fff;
+}
+
+:global([data-theme="dark"]) .linkIconCanva {
+  background: var(--text-color);
+}
+
+:global([data-theme="dark"]) .linkIconCanva rect {
+  fill: var(--text-color);
+}
+
+:global([data-theme="dark"]) .linkIconCanva path {
+  stroke: var(--bg-color);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0 24px;
+  }
+
+  .hero {
+    gap: 16px;
+  }
+
+  .heroTitleRow {
+    gap: 12px;
+  }
+
+  .heroTitle {
+    font-size: 28px;
+  }
+
+  .heroCaption {
+    font-size: 18px;
+  }
+
+  .heroSubtitle {
+    font-size: 18px;
+  }
+
+  .heroText {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    margin: 0 16px;
+  }
+
+  .hero {
+    gap: 12px;
+  }
+
+  .heroTitleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .heroTitle {
+    font-size: 24px;
+  }
+
+  .heroCaption {
+    font-size: 16px;
+  }
+
+  .heroSubtitle {
+    font-size: 16px;
+  }
+
+  .heroText {
+    font-size: 14px;
+  }
+}

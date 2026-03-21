@@ -1,0 +1,269 @@
+.sectionsWrapper {
+  will-change: transform;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 0;
+  position: relative;
+  height: 100vh;
+  min-height: unset;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.section > * {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sectionActive > * {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.25s;
+}
+
+.container {
+  margin: 0 160px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.projectSectionContainer {
+  flex-direction: column;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.heroSubtitle {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.heroText {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+}
+
+.projectTitle {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.cardGap {
+  height: 16px;
+}
+
+.projectGridFeatured {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  grid-template-columns: 7fr 5fr;
+}
+
+.projectGridNormal {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.contactSection {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.connectContainer {
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.connectTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.connectButton {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.connectLogo {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  flex-shrink: 0;
+}
+
+.connectLogo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.connectText {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.footerText {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
+  color: var(--text-secondary);
+  padding-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0 24px;
+  }
+
+  .section {
+    padding-top: 60px;
+  }
+
+  .hero {
+    gap: 16px;
+  }
+
+  .heroTitle {
+    font-size: 34px;
+  }
+
+  .heroSubtitle {
+    font-size: 18px;
+  }
+
+  .heroText {
+    font-size: 15px;
+  }
+
+  .projectGridFeatured {
+    grid-template-columns: 1fr;
+  }
+
+  .projectGridNormal {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projectTitle {
+    font-size: 18px;
+  }
+
+  .connectTitle {
+    font-size: 18px;
+  }
+
+  .connectLogo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .connectText {
+    font-size: 15px;
+  }
+
+  .footerText {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    margin: 0 16px;
+  }
+
+  .section {
+    padding-top: 60px;
+  }
+
+  .hero {
+    gap: 12px;
+  }
+
+  .heroTitle {
+    font-size: 30px;
+  }
+
+  .heroSubtitle {
+    font-size: 16px;
+  }
+
+  .heroText {
+    font-size: 14px;
+  }
+
+  .projectGridFeatured {
+    grid-template-columns: 1fr;
+  }
+
+  .projectGridNormal {
+    grid-template-columns: 1fr;
+  }
+
+  .projectTitle {
+    font-size: 16px;
+  }
+
+  .connectTitle {
+    font-size: 16px;
+  }
+
+  .connectLogo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .connectButton {
+    gap: 12px;
+  }
+
+  .connectContainer {
+    gap: 12px;
+  }
+
+  .connectText {
+    font-size: 14px;
+  }
+
+  .footerText {
+    font-size: 12px;
+  }
+}
