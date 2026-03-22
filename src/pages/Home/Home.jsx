@@ -118,6 +118,14 @@ export default function Home() {
               </div>
               <div className={styles.connectText}>GitHub</div>
             </a>
+            <a href="https://okjk.co/hS2gAU" className={styles.connectButton}>
+              <div className={styles.connectLogo}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M5 0h14c2.76 0 5 2.24 5 5v14c0 2.76-2.24 5-5 5H5C2.24 24 0 21.76 0 19V5C0 2.24 2.24 0 5 0zm8 5h-2l-5.5 7.5h3.5L7 19.5l10-8h-4L15 5z" />
+                </svg>
+              </div>
+              <div className={styles.connectText}>即刻</div>
+            </a>
           </div>
           <div className={styles.footerText}>{t.footer}</div>
         </div>
