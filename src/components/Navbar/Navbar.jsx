@@ -2,36 +2,46 @@ import { Link } from 'react-router-dom'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import styles from './Navbar.module.css'
 
-export default function Navbar({ theme, onToggleTheme, mode = 'home', activeSection, onNavClick }) {
+export default function Navbar({ theme, onToggleTheme, lang, onToggleLang, navLabels, mode = 'home', activeSection, onNavClick }) {
   if (mode === 'detail') {
     return (
       <nav className={styles.nav}>
         <div className={styles.container}>
           <div className={styles.navContainer}>
-            <Link to="/" className={styles.navButton}>Back</Link>
-            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+            <Link to="/" className={styles.navButton}>{navLabels.back}</Link>
+            <div className={styles.navRight}>
+              <button className={styles.langToggle} onClick={onToggleLang}>
+                {lang === 'en' ? '中文' : 'EN'}
+              </button>
+              <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+            </div>
           </div>
         </div>
       </nav>
     )
   }
 
-  const sections = ['about', 'projects', 'contact']
+  const sectionKeys = ['about', 'projects', 'contact']
 
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
         <div className={styles.navContainer}>
-          {sections.map((section, i) => (
+          {sectionKeys.map((key, i) => (
             <button
-              key={section}
+              key={key}
               className={`${styles.navButton} ${activeSection === i ? styles.navActive : ''}`}
               onClick={() => onNavClick(i)}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
+              {navLabels[key]}
             </button>
           ))}
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          <div className={styles.navRight}>
+            <button className={styles.langToggle} onClick={onToggleLang}>
+              {lang === 'en' ? '中文' : 'EN'}
+            </button>
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          </div>
         </div>
       </div>
     </nav>

@@ -1,5 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
+import { useLanguage } from '../../hooks/useLanguage'
+import { i18n } from '../../data/i18n'
 import { getProjectById } from '../../data/projects'
 import Navbar from '../../components/Navbar/Navbar'
 import styles from './ProjectDetail.module.css'
@@ -35,16 +37,25 @@ function ChatIcon() {
 
 const iconMap = { link: LinkIcon, github: GitHubIcon, chat: ChatIcon }
 
+function localized(value, lang) {
+  if (typeof value === 'object' && value !== null) return value[lang] || value.en
+  return value
+}
+
 export default function ProjectDetail() {
   const { id } = useParams()
   const { theme, toggleTheme } = useTheme()
+  const { lang, toggleLang } = useLanguage()
+  const t = i18n[lang]
   const project = getProjectById(id)
 
   if (!project) return <Navigate to="/" replace />
 
+  const description = localized(project.description, lang)
+
   return (
     <>
-      <Navbar theme={theme} onToggleTheme={toggleTheme} mode="detail" />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} lang={lang} onToggleLang={toggleLang} navLabels={t.nav} mode="detail" />
 
       <div className={styles.page}>
         <div className={styles.section}>
@@ -53,9 +64,9 @@ export default function ProjectDetail() {
               <h1 className={styles.heroTitle}>{project.title}</h1>
               <span className={styles.heroCaption}>{project.role}</span>
             </div>
-            <h2 className={styles.heroSubtitle}>{project.subtitle}</h2>
+            <h2 className={styles.heroSubtitle}>{localized(project.subtitle, lang)}</h2>
             <div className={styles.heroText}>
-              {project.description.split('\n\n').map((para, i) => (
+              {description.split('\n\n').map((para, i) => (
                 <span key={i}>
                   {i > 0 && <><br /><br /></>}
                   {para}
@@ -68,7 +79,7 @@ export default function ProjectDetail() {
         {project.links.length > 0 && (
           <div className={styles.section}>
             <div className={`${styles.container} ${styles.linkContainer}`}>
-              <div className={styles.linkTitle}>Links</div>
+              <div className={styles.linkTitle}>{t.linksTitle}</div>
               {project.links.map((link) => {
                 const Icon = iconMap[link.icon] || LinkIcon
                 return (
@@ -76,7 +87,7 @@ export default function ProjectDetail() {
                     <div className={styles.linkItemLogo}>
                       <Icon />
                     </div>
-                    <div className={styles.linkItemText}>{link.label}</div>
+                    <div className={styles.linkItemText}>{localized(link.label, lang)}</div>
                   </a>
                 )
               })}

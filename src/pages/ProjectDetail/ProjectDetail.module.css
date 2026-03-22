@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 60px;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
 
 .section {

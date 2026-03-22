@@ -11,8 +11,19 @@ export function useFullpageScroll(sectionCount) {
     (index) => {
       if (index < 0 || index >= sectionCount) return
       if (isAnimating.current) return
+
+      const wrapper = wrapperRef.current
+      const section = sectionsRef.current[index]
+      if (!wrapper || !section) return
+
       isAnimating.current = true
       setCurrentIndex(index)
+
+      wrapper.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth',
+      })
+
       setTimeout(() => {
         isAnimating.current = false
       }, 850)
@@ -21,6 +32,9 @@ export function useFullpageScroll(sectionCount) {
   )
 
   useEffect(() => {
+    const wrapper = wrapperRef.current
+    if (!wrapper) return
+
     const handleWheel = (e) => {
       e.preventDefault()
       if (isAnimating.current) return
@@ -30,21 +44,14 @@ export function useFullpageScroll(sectionCount) {
         const scrollable = section.scrollHeight > section.clientHeight + 5
 
         if (scrollable) {
-          const atTop = section.scrollTop <= 1
+          const sectionTop = section.offsetTop
+          const scrollTop = wrapper.scrollTop - sectionTop
+          const atTop = scrollTop <= 1
           const atBottom =
-            Math.ceil(section.scrollTop + section.clientHeight) >= section.scrollHeight - 1
+            Math.ceil(scrollTop + wrapper.clientHeight) >= section.scrollHeight - 1
 
-          if (e.deltaY > 0 && !atBottom) {
-            section.scrollTop = Math.min(
-              section.scrollTop + Math.abs(e.deltaY),
-              section.scrollHeight - section.clientHeight
-            )
-            return
-          }
-          if (e.deltaY < 0 && !atTop) {
-            section.scrollTop = Math.max(section.scrollTop + e.deltaY, 0)
-            return
-          }
+          if (e.deltaY > 0 && !atBottom) return
+          if (e.deltaY < 0 && !atTop) return
         }
       }
 
@@ -83,15 +90,15 @@ export function useFullpageScroll(sectionCount) {
       }
     }
 
-    document.addEventListener('wheel', handleWheel, { passive: false })
-    document.addEventListener('touchstart', handleTouchStart, { passive: true })
-    document.addEventListener('touchend', handleTouchEnd, { passive: true })
+    wrapper.addEventListener('wheel', handleWheel, { passive: false })
+    wrapper.addEventListener('touchstart', handleTouchStart, { passive: true })
+    wrapper.addEventListener('touchend', handleTouchEnd, { passive: true })
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      document.removeEventListener('wheel', handleWheel)
-      document.removeEventListener('touchstart', handleTouchStart)
-      document.removeEventListener('touchend', handleTouchEnd)
+      wrapper.removeEventListener('wheel', handleWheel)
+      wrapper.removeEventListener('touchstart', handleTouchStart)
+      wrapper.removeEventListener('touchend', handleTouchEnd)
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [currentIndex, goToSection])

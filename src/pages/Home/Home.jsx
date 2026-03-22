@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
 import { useTheme } from '../../hooks/useTheme'
+import { useLanguage } from '../../hooks/useLanguage'
 import { useFullpageScroll } from '../../hooks/useFullpageScroll'
+import { i18n } from '../../data/i18n'
 import Navbar from '../../components/Navbar/Navbar'
 import WordCycle from '../../components/WordCycle/WordCycle'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
@@ -12,12 +13,9 @@ const normal = projects.filter((p) => p.cardType === 'normal')
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme()
+  const { lang, toggleLang } = useLanguage()
   const { currentIndex, goToSection, wrapperRef, sectionsRef } = useFullpageScroll(3)
-
-  useEffect(() => {
-    document.body.classList.add('fullpage')
-    return () => document.body.classList.remove('fullpage')
-  }, [])
+  const t = i18n[lang]
 
   const setSectionRef = (index) => (el) => {
     sectionsRef.current[index] = el
@@ -28,6 +26,9 @@ export default function Home() {
       <Navbar
         theme={theme}
         onToggleTheme={toggleTheme}
+        lang={lang}
+        onToggleLang={toggleLang}
+        navLabels={t.nav}
         mode="home"
         activeSection={currentIndex}
         onNavClick={goToSection}
@@ -36,7 +37,6 @@ export default function Home() {
       <div
         ref={wrapperRef}
         className={styles.sectionsWrapper}
-        style={{ transform: `translate3d(0, -${currentIndex * 100}vh, 0)` }}
       >
         {/* About */}
         <div
@@ -45,12 +45,12 @@ export default function Home() {
         >
           <div className={styles.container}>
             <div className={styles.hero}>
-              <h1 className={styles.heroTitle}>Weston Guo</h1>
+              <h1 className={styles.heroTitle}>{t.name}</h1>
               <p className={styles.heroSubtitle}>
                 Founder &amp; Builder. I <WordCycle /> Cool Stuff.
               </p>
               <div className={styles.heroText}>
-                Hi. I am Weston Guo, freshman at USC Iovine and Young Academy majoring in Art, Technology and Business of Innovation. I build digital products at the intersection of design, engineering, and emerging technologies. I'm particularly interested in web development, UI/UX design, and agent-based applications. Love connecting with cool people and building stuff people actually want.
+                {t.heroText}
               </div>
             </div>
           </div>
@@ -62,17 +62,17 @@ export default function Home() {
           className={`${styles.section} ${currentIndex === 1 ? styles.sectionActive : ''}`}
         >
           <div className={`${styles.container} ${styles.projectSectionContainer}`}>
-            <h2 className={styles.projectTitle}>Things I've been building recently</h2>
+            <h2 className={styles.projectTitle}>{t.projectsTitle}</h2>
             <div className={styles.cardGap} />
             <div className={styles.projectGridFeatured}>
               {featured.map((p) => (
-                <ProjectCard key={p.id} {...p} />
+                <ProjectCard key={p.id} {...p} lang={lang} />
               ))}
             </div>
             <div className={styles.cardGap} />
             <div className={styles.projectGridNormal}>
               {normal.map((p) => (
-                <ProjectCard key={p.id} {...p} />
+                <ProjectCard key={p.id} {...p} lang={lang} />
               ))}
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function Home() {
           className={`${styles.section} ${styles.contactSection} ${currentIndex === 2 ? styles.sectionActive : ''}`}
         >
           <div className={`${styles.container} ${styles.connectContainer}`}>
-            <div className={styles.connectTitle}>Let's connect</div>
+            <div className={styles.connectTitle}>{t.connectTitle}</div>
             <a href="https://www.linkedin.com/in/weston-guo/" className={styles.connectButton}>
               <div className={styles.connectLogo}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,7 +110,7 @@ export default function Home() {
               <div className={styles.connectText}>GitHub</div>
             </a>
           </div>
-          <div className={styles.footerText}>&copy; 2026 Weston Guo. All rights reserved.</div>
+          <div className={styles.footerText}>{t.footer}</div>
         </div>
       </div>
     </>
