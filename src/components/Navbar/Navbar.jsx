@@ -8,7 +8,7 @@ export default function Navbar({ theme, onToggleTheme, lang, onToggleLang, navLa
       <nav className={styles.nav}>
         <div className={styles.container}>
           <div className={styles.navContainer}>
-            <Link to="/" className={styles.navButton}>{navLabels.back}</Link>
+            <Link to="/" state={{ section: 1 }} className={styles.navButton}>{navLabels.back}</Link>
             <div className={styles.navRight}>
               <button className={styles.langToggle} onClick={onToggleLang}>
                 {lang === 'en' ? '中文' : 'EN'}

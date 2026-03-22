@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
 import { useLanguage } from '../../hooks/useLanguage'
 import { useFullpageScroll } from '../../hooks/useFullpageScroll'
@@ -15,7 +17,14 @@ export default function Home() {
   const { theme, toggleTheme } = useTheme()
   const { lang, toggleLang } = useLanguage()
   const { currentIndex, goToSection, wrapperRef, sectionsRef } = useFullpageScroll(3)
+  const location = useLocation()
   const t = i18n[lang]
+
+  useEffect(() => {
+    if (location.state?.section != null) {
+      goToSection(location.state.section)
+    }
+  }, [location.state, goToSection])
 
   const setSectionRef = (index) => (el) => {
     sectionsRef.current[index] = el
