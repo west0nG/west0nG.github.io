@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
 import { useLanguage } from '../../hooks/useLanguage'
@@ -43,6 +44,13 @@ export default function ProjectDetail() {
   const { lang, toggleLang } = useLanguage()
   const t = i18n[lang]
   const project = getProjectById(id)
+
+  useEffect(() => {
+    if (project) {
+      document.title = `${project.title} - Weston Guo`
+      return () => { document.title = 'Weston Guo' }
+    }
+  }, [project])
 
   if (!project) return <Navigate to="/" replace />
 
