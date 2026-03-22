@@ -20,9 +20,9 @@ export const i18n = {
     heroSubtitle: 'Founder & Builder. I {word} Cool Stuff.',
     heroText:
       '你好，我是郭语石，USC Iovine and Young Academy 大一新生，主修 Art, Technology and Business of Innovation。我在设计、工程和新兴技术的交叉领域构建数字产品，对 Web 开发、UI/UX 设计和 Agent 应用尤其感兴趣。喜欢认识有意思的人，做人们真正想用的东西。',
-    projectsTitle: '最近在做的一些事',
-    connectTitle: '联系我',
-    footer: '© 2026 郭语石 版权所有',
+    projectsTitle: '我的作品',
+    connectTitle: '来聊聊吧',
+    footer: '© 2026 Weston Guo 版权所有',
     linksTitle: '链接',
     nav: {
       about: '关于',
