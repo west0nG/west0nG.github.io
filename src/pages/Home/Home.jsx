@@ -121,10 +121,10 @@ export default function Home() {
             <a href="https://okjk.co/hS2gAU" className={styles.connectButton}>
               <div className={styles.connectLogo}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM14 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM14.5 11v5.5c0 1.38-.56 2.5-1.68 3.13l-1.32-.94c.78-.38 1-1.06 1-1.69V13H10.5v-2h4z" />
+                  <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM15.5 6h-3v9c0 1.1-.5 1.85-1.5 2.25-.55.22-1.15.33-1.75.33v-2.16c.35 0 .7-.07.95-.18.35-.15.3-.52.3-.74V8H8.5V6h7z" />
                 </svg>
               </div>
-              <div className={styles.connectText}>即刻</div>
+              <div className={styles.connectText}>Jike</div>
             </a>
           </div>
           <div className={styles.footerText}>{t.footer}</div>
