@@ -121,7 +121,7 @@ export default function Home() {
             <a href="https://okjk.co/hS2gAU" className={styles.connectButton}>
               <div className={styles.connectLogo}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M5 0h14c2.76 0 5 2.24 5 5v14c0 2.76-2.24 5-5 5H5C2.24 24 0 21.76 0 19V5C0 2.24 2.24 0 5 0zm8 5h-2l-5.5 7.5h3.5L7 19.5l10-8h-4L15 5z" />
+                  <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM14 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM14.5 11v5.5c0 1.38-.56 2.5-1.68 3.13l-1.32-.94c.78-.38 1-1.06 1-1.69V13H10.5v-2h4z" />
                 </svg>
               </div>
               <div className={styles.connectText}>即刻</div>
