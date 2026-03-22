@@ -7,9 +7,7 @@ const cardTypeClass = {
   normal: styles.normal,
 }
 
-export default function ProjectCard({ id, title, subtitle, cardType, image, lang }) {
-  const sub = typeof subtitle === 'object' ? subtitle[lang] || subtitle.en : subtitle
-
+export default function ProjectCard({ id, title, subtitle, cardType, image }) {
   return (
     <Link
       to={`/projects/${id}`}
@@ -17,7 +15,7 @@ export default function ProjectCard({ id, title, subtitle, cardType, image, lang
       style={{ '--hover-bg-image': `url(${image})` }}
     >
       <h3 className={styles.cardTitle}>{title}</h3>
-      <p className={styles.cardSubtitle}>{sub}</p>
+      <p className={styles.cardSubtitle}>{subtitle}</p>
     </Link>
   )
 }

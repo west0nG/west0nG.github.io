@@ -7,7 +7,6 @@ export const i18n = {
     projectsTitle: "Things I've been building recently",
     connectTitle: "Let's connect",
     footer: '© 2026 Weston Guo. All rights reserved.',
-    linksTitle: 'Links',
     nav: {
       about: 'About',
       projects: 'Projects',
@@ -19,7 +18,7 @@ export const i18n = {
     name: '郭语石',
     heroSubtitle: 'Founder & Builder. I {word} Cool Stuff.',
     heroText:
-      '你好，我是郭语石，USC Iovine and Young Academy 大一新生，主修 Art, Technology and Business of Innovation。我在设计、工程和新兴技术的交叉领域构建数字产品，对 Web 开发、UI/UX 设计和 Agent 应用尤其感兴趣。喜欢认识有意思的人，做人们真正想用的东西。',
+      '你好，我是郭语石Weston，今年19，来自北京，现在在USC Iovine and Young Academy读大一。初中考过中考状元，高中自己办过黑客松，跌跌撞撞做了几个项目，现在在创业中。我相信自己，相信真诚，相信预测未来的最好方式就是自己建构它，相信学习最好的方式就是Build it, Ship it, and Pivot it. 我喜欢认识有趣的人，所以如果你看到这里，来聊聊吧！',
     projectsTitle: '我的作品',
     connectTitle: '来聊聊吧',
     footer: '© 2026 Weston Guo 版权所有',

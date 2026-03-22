@@ -66,13 +66,13 @@ export default function Home() {
             <div className={styles.cardGap} />
             <div className={styles.projectGridFeatured}>
               {featured.map((p) => (
-                <ProjectCard key={p.id} {...p} lang={lang} />
+                <ProjectCard key={p.id} {...p} />
               ))}
             </div>
             <div className={styles.cardGap} />
             <div className={styles.projectGridNormal}>
               {normal.map((p) => (
-                <ProjectCard key={p.id} {...p} lang={lang} />
+                <ProjectCard key={p.id} {...p} />
               ))}
             </div>
           </div>

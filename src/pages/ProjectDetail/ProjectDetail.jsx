@@ -37,11 +37,6 @@ function ChatIcon() {
 
 const iconMap = { link: LinkIcon, github: GitHubIcon, chat: ChatIcon }
 
-function localized(value, lang) {
-  if (typeof value === 'object' && value !== null) return value[lang] || value.en
-  return value
-}
-
 export default function ProjectDetail() {
   const { id } = useParams()
   const { theme, toggleTheme } = useTheme()
@@ -50,8 +45,6 @@ export default function ProjectDetail() {
   const project = getProjectById(id)
 
   if (!project) return <Navigate to="/" replace />
-
-  const description = localized(project.description, lang)
 
   return (
     <>
@@ -64,9 +57,9 @@ export default function ProjectDetail() {
               <h1 className={styles.heroTitle}>{project.title}</h1>
               <span className={styles.heroCaption}>{project.role}</span>
             </div>
-            <h2 className={styles.heroSubtitle}>{localized(project.subtitle, lang)}</h2>
+            <h2 className={styles.heroSubtitle}>{project.subtitle}</h2>
             <div className={styles.heroText}>
-              {description.split('\n\n').map((para, i) => (
+              {project.description.split('\n\n').map((para, i) => (
                 <span key={i}>
                   {i > 0 && <><br /><br /></>}
                   {para}
@@ -79,7 +72,7 @@ export default function ProjectDetail() {
         {project.links.length > 0 && (
           <div className={styles.section}>
             <div className={`${styles.container} ${styles.linkContainer}`}>
-              <div className={styles.linkTitle}>{t.linksTitle}</div>
+              <div className={styles.linkTitle}>Links</div>
               {project.links.map((link) => {
                 const Icon = iconMap[link.icon] || LinkIcon
                 return (
@@ -87,7 +80,7 @@ export default function ProjectDetail() {
                     <div className={styles.linkItemLogo}>
                       <Icon />
                     </div>
-                    <div className={styles.linkItemText}>{localized(link.label, lang)}</div>
+                    <div className={styles.linkItemText}>{link.label}</div>
                   </a>
                 )
               })}
