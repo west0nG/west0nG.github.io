@@ -6,6 +6,7 @@ export function useFullpageScroll(sectionCount) {
   const wrapperRef = useRef(null)
   const sectionsRef = useRef([])
   const touchStartY = useRef(0)
+  const touchLastY = useRef(0)
 
   const goToSection = useCallback(
     (index) => {
@@ -31,30 +32,60 @@ export function useFullpageScroll(sectionCount) {
     [sectionCount]
   )
 
+  // Check if a section overflows the viewport and return boundary info
+  const getSectionScrollInfo = useCallback((wrapper) => {
+    const section = sectionsRef.current[currentIndex]
+    if (!section || !wrapper) return null
+
+    const sectionTop = section.offsetTop
+    const sectionHeight = section.scrollHeight
+    const viewportHeight = wrapper.clientHeight
+    const scrollable = sectionHeight > viewportHeight + 5
+
+    if (!scrollable) return null
+
+    const scrollTop = wrapper.scrollTop - sectionTop
+    const maxScroll = sectionHeight - viewportHeight
+
+    return {
+      sectionTop,
+      scrollTop,
+      maxScroll,
+      atTop: scrollTop <= 1,
+      atBottom: scrollTop >= maxScroll - 1,
+    }
+  }, [currentIndex])
+
   useEffect(() => {
     const wrapper = wrapperRef.current
     if (!wrapper) return
 
     const handleWheel = (e) => {
-      e.preventDefault()
-      if (isAnimating.current) return
+      if (isAnimating.current) { e.preventDefault(); return }
 
-      const section = sectionsRef.current[currentIndex]
-      if (section) {
-        const scrollable = section.scrollHeight > section.clientHeight + 5
+      const info = getSectionScrollInfo(wrapper)
 
-        if (scrollable) {
-          const sectionTop = section.offsetTop
-          const scrollTop = wrapper.scrollTop - sectionTop
-          const atTop = scrollTop <= 1
-          const atBottom =
-            Math.ceil(scrollTop + wrapper.clientHeight) >= section.scrollHeight - 1
-
-          if (e.deltaY > 0 && !atBottom) return
-          if (e.deltaY < 0 && !atTop) return
+      if (info) {
+        // Section overflows: allow internal scrolling before jumping
+        if (e.deltaY > 0 && !info.atBottom) {
+          e.preventDefault()
+          wrapper.scrollTop = Math.min(
+            wrapper.scrollTop + Math.abs(e.deltaY),
+            info.sectionTop + info.maxScroll
+          )
+          return
+        }
+        if (e.deltaY < 0 && !info.atTop) {
+          e.preventDefault()
+          wrapper.scrollTop = Math.max(
+            wrapper.scrollTop - Math.abs(e.deltaY),
+            info.sectionTop
+          )
+          return
         }
       }
 
+      e.preventDefault()
       if (Math.abs(e.deltaY) < 30) return
 
       if (e.deltaY > 0) {
@@ -66,11 +97,47 @@ export function useFullpageScroll(sectionCount) {
 
     const handleTouchStart = (e) => {
       touchStartY.current = e.touches[0].clientY
+      touchLastY.current = e.touches[0].clientY
+    }
+
+    const handleTouchMove = (e) => {
+      if (isAnimating.current) return
+
+      const currentY = e.touches[0].clientY
+      const deltaY = touchLastY.current - currentY // positive = finger moves up = scroll down
+      touchLastY.current = currentY
+
+      const info = getSectionScrollInfo(wrapper)
+      if (info) {
+        if (deltaY > 0 && !info.atBottom) {
+          e.preventDefault()
+          wrapper.scrollTop = Math.min(
+            wrapper.scrollTop + deltaY,
+            info.sectionTop + info.maxScroll
+          )
+          return
+        }
+        if (deltaY < 0 && !info.atTop) {
+          e.preventDefault()
+          wrapper.scrollTop = Math.max(
+            wrapper.scrollTop + deltaY,
+            info.sectionTop
+          )
+          return
+        }
+      }
     }
 
     const handleTouchEnd = (e) => {
       if (isAnimating.current) return
       const diff = touchStartY.current - e.changedTouches[0].clientY
+
+      const info = getSectionScrollInfo(wrapper)
+      if (info) {
+        if (diff > 0 && !info.atBottom) return
+        if (diff < 0 && !info.atTop) return
+      }
+
       if (Math.abs(diff) < 50) return
       if (diff > 0) {
         goToSection(currentIndex + 1)
@@ -92,16 +159,18 @@ export function useFullpageScroll(sectionCount) {
 
     wrapper.addEventListener('wheel', handleWheel, { passive: false })
     wrapper.addEventListener('touchstart', handleTouchStart, { passive: true })
+    wrapper.addEventListener('touchmove', handleTouchMove, { passive: false })
     wrapper.addEventListener('touchend', handleTouchEnd, { passive: true })
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
       wrapper.removeEventListener('wheel', handleWheel)
       wrapper.removeEventListener('touchstart', handleTouchStart)
+      wrapper.removeEventListener('touchmove', handleTouchMove)
       wrapper.removeEventListener('touchend', handleTouchEnd)
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [currentIndex, goToSection])
+  }, [currentIndex, goToSection, getSectionScrollInfo])
 
   return { currentIndex, goToSection, wrapperRef, sectionsRef }
 }

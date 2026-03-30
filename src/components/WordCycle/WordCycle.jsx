@@ -37,12 +37,20 @@ export default function WordCycle() {
     return () => clearInterval(timerRef.current)
   }, [])
 
+  const handleTap = useCallback(() => {
+    if (cycling) stopCycling()
+    else startCycling()
+  }, [cycling, startCycling, stopCycling])
+
   return (
     <span
       className={`${styles.wrapper} ${cycling ? styles.cycling : ''}`}
       style={cycling ? { width: words[wordIndex].width } : undefined}
       onMouseEnter={startCycling}
       onMouseLeave={stopCycling}
+      onClick={handleTap}
+      role="button"
+      tabIndex={0}
       aria-label="Ship"
     >
       Ship

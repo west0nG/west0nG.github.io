@@ -80,7 +80,7 @@ export default function ProjectDetail() {
         {project.links.length > 0 && (
           <div className={styles.section}>
             <div className={`${styles.container} ${styles.linkContainer}`}>
-              <div className={styles.linkTitle}>Links</div>
+              <div className={styles.linkTitle}>{t.linksTitle}</div>
               {project.links.map((link) => {
                 const Icon = iconMap[link.icon] || LinkIcon
                 return (

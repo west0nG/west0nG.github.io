@@ -30,7 +30,7 @@ export const projects = [
     id: 'sigmahub',
     title: 'SigmaHub',
     subtitle: 'AI powered video learning platform',
-    role: 'Product Manger & UI Designer',
+    role: 'Product Manager & UI Designer',
     description:
       "Have you ever watched educational content on YouTube or Bilibili, only to realize the next day that you've forgotten almost everything? Passive video consumption is an extremely inefficient way to learn. SigmaHub is built to change that.\n\nSigmaHub is an AI-powered learning companion that turns video watching into active learning. By automatically generating questions, summaries, and keyword clouds, SigmaHub helps learners engage with content more deeply and significantly improves knowledge retention \u2014 making video learning up to ten times more effective.",
     cardType: 'normal',
@@ -55,7 +55,7 @@ export const projects = [
     id: 'punky',
     title: 'Punky AI',
     subtitle: 'On-chain AI Companionship',
-    role: 'Fouding Member',
+    role: 'Founding Member',
     description:
       'AI companionship should not be centralized or controlled by large corporations. Emotional connections deserve to be decentralized, and individuals should own their relationships with companion AIs.\n\nBased on this belief, we built Punky AI, an AI e-pet companionship system powered by Dynamic NFTs. By owning the NFT, users retain ownership of their emotional connection, ensuring that the relationship with their AI companion truly belongs to them.',
     cardType: 'normal',
