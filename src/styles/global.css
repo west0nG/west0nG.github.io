@@ -16,6 +16,16 @@
   --card-shadow-hover: rgba(0, 0, 0, 0.4);
 }
 
+[data-page="archive"],
+[data-page="archive"][data-theme="dark"] {
+  --bg-color: #2d1d10;
+  --text-color: #efddc1;
+  --text-secondary: #a88863;
+  --border-color: #5a4329;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: rgba(0, 0, 0, 0.55);
+}
+
 *,
 *::before,
 *::after {

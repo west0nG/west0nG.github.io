@@ -7,6 +7,9 @@ export const i18n = {
     projectsTitle: "Things I've been building recently",
     connectTitle: "Let's connect",
     linksTitle: 'Links',
+    archiveButtonTitle: 'Archive',
+    archiveButtonSubtitle: 'Earlier projects',
+    archiveTitle: 'Archive',
     footer: '© 2026 Weston Guo. All rights reserved.',
     nav: {
       about: 'About',
@@ -24,6 +27,9 @@ export const i18n = {
     connectTitle: '来聊聊吧',
     footer: '© 2026 Weston Guo 版权所有',
     linksTitle: '链接',
+    archiveButtonTitle: 'Archive',
+    archiveButtonSubtitle: '过往作品',
+    archiveTitle: 'Archive',
     nav: {
       about: '关于',
       projects: '项目',

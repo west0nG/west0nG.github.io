@@ -46,9 +46,16 @@ export default function ProjectDetail() {
   const project = getProjectById(id)
 
   useEffect(() => {
-    if (project) {
-      document.title = `${project.title} - Weston Guo`
-      return () => { document.title = 'Weston Guo' }
+    if (!project) return
+    document.title = `${project.title} - Weston Guo`
+    if (project.archived) {
+      document.documentElement.setAttribute('data-page', 'archive')
+    }
+    return () => {
+      document.title = 'Weston Guo'
+      if (project.archived) {
+        document.documentElement.removeAttribute('data-page')
+      }
     }
   }, [project])
 

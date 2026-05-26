@@ -77,18 +77,18 @@
   height: 16px;
 }
 
-.projectGridFeatured {
+.projectGridFeaturedPair {
   display: grid;
   gap: 16px;
   width: 100%;
   grid-template-columns: 7fr 5fr;
 }
 
-.projectGridNormal {
+.projectGridSecondaryArchive {
   display: grid;
   gap: 16px;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 5fr 7fr;
 }
 
 .contactSection {
@@ -176,12 +176,12 @@
     font-size: 15px;
   }
 
-  .projectGridFeatured {
+  .projectGridFeaturedPair {
     grid-template-columns: 1fr;
   }
 
-  .projectGridNormal {
-    grid-template-columns: repeat(2, 1fr);
+  .projectGridSecondaryArchive {
+    grid-template-columns: 1fr;
   }
 
   .projectTitle {
@@ -231,11 +231,11 @@
     font-size: 14px;
   }
 
-  .projectGridFeatured {
+  .projectGridFeaturedPair {
     grid-template-columns: 1fr;
   }
 
-  .projectGridNormal {
+  .projectGridSecondaryArchive {
     grid-template-columns: 1fr;
   }
 

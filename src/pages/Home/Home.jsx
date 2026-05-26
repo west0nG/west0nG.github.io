@@ -10,8 +10,8 @@ import ProjectCard from '../../components/ProjectCard/ProjectCard'
 import { projects } from '../../data/projects'
 import styles from './Home.module.css'
 
-const featured = projects.filter((p) => p.cardType === 'featured' || p.cardType === 'featured-secondary')
-const normal = projects.filter((p) => p.cardType === 'normal')
+const topFeatured = projects.filter((p) => p.cardType === 'featured' && !p.archived)
+const secondary = projects.find((p) => p.cardType === 'featured-secondary' && !p.archived)
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme()
@@ -73,16 +73,21 @@ export default function Home() {
           <div className={`${styles.container} ${styles.projectSectionContainer}`}>
             <h2 className={styles.projectTitle}>{t.projectsTitle}</h2>
             <div className={styles.cardGap} />
-            <div className={styles.projectGridFeatured}>
-              {featured.map((p) => (
+            <div className={styles.projectGridFeaturedPair}>
+              {topFeatured.map((p) => (
                 <ProjectCard key={p.id} {...p} />
               ))}
             </div>
             <div className={styles.cardGap} />
-            <div className={styles.projectGridNormal}>
-              {normal.map((p) => (
-                <ProjectCard key={p.id} {...p} />
-              ))}
+            <div className={styles.projectGridSecondaryArchive}>
+              <ProjectCard
+                id="archive"
+                title={t.archiveButtonTitle}
+                subtitle={t.archiveButtonSubtitle}
+                cardType="normal"
+                to="/archive"
+              />
+              {secondary && <ProjectCard {...secondary} />}
             </div>
           </div>
         </div>
