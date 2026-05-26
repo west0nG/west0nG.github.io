@@ -2,11 +2,12 @@ export const projects = [
   {
     id: 'foundagent',
     title: 'Foundagent',
-    subtitle: 'Coming soon',
+    subtitle: 'Agents as Founders',
     role: 'TBD',
     description: 'Coming soon.',
     cardType: 'featured',
-    image: '/assets/modcraft.png',
+    image: '/assets/hackerhouse.webp',
+    overlay: '/assets/foundagent-wordmark.svg',
     links: [],
   },
   {

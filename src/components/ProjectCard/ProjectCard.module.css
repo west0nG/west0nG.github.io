@@ -25,10 +25,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: var(--hover-bg-image, none);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: var(--hover-overlay-image, none), var(--hover-bg-image, none);
+  background-size: 70% auto, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
   opacity: 0;
   transition: opacity 0.4s ease;
   border-radius: 16px;

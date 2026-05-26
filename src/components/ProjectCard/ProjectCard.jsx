@@ -7,14 +7,16 @@ const cardTypeClass = {
   normal: styles.normal,
 }
 
-export default function ProjectCard({ id, title, subtitle, cardType, image, to }) {
+export default function ProjectCard({ id, title, subtitle, cardType, image, overlay, to }) {
   const href = to ?? `/projects/${id}`
-  const style = image ? { '--hover-bg-image': `url(${image})` } : undefined
+  const style = {}
+  if (image) style['--hover-bg-image'] = `url(${image})`
+  if (overlay) style['--hover-overlay-image'] = `url(${overlay})`
   return (
     <Link
       to={href}
       className={`${styles.card} ${cardTypeClass[cardType] || styles.normal}`}
-      style={style}
+      style={Object.keys(style).length ? style : undefined}
     >
       <h3 className={styles.cardTitle}>{title}</h3>
       <p className={styles.cardSubtitle}>{subtitle}</p>

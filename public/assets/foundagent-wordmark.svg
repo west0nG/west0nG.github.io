@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Foundagent wordmark — Hanken Grotesk ExtraBold 800. Humanist heavy-sans
+  cut, softer/warmer than Archivo Black. FOUND (paper) + AGENT (gold).
+  Transparent background — for use on already-dark surfaces.
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 820 140"
+  preserveAspectRatio="xMidYMid meet"
+>
+  <defs>
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@800&amp;display=swap");
+      .wm {
+        font-family: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+        font-weight: 800;
+        font-size: 92px;
+        letter-spacing: 0.06em;
+      }
+    </style>
+  </defs>
+
+  <text
+    class="wm"
+    x="50%"
+    y="50%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    xml:space="preserve"
+  ><tspan fill="#f4efe4">FOUND</tspan><tspan fill="#c2974a">AGENT</tspan></text>
+</svg>
