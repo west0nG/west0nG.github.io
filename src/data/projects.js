@@ -3,7 +3,8 @@ export const projects = [
     id: 'foundagent',
     title: 'Foundagent',
     subtitle: 'Agents as Founders',
-    role: 'TBD',
+    role: 'Founder',
+    date: 'Mar 2026 – Present',
     description: 'Coming soon.',
     cardType: 'featured',
     image: '/assets/hackerhouse.webp',
@@ -15,6 +16,7 @@ export const projects = [
     title: 'ModCraft',
     subtitle: 'Agent for Game Mod Creation',
     role: 'Co-Founder',
+    date: 'Dec 2025 – Apr 2026',
     description:
       'ModCraft turns natural language Minecraft mod ideas into fully playable game mods. Let everyone create their own mods in 5 minutes without coding.',
     cardType: 'featured',
@@ -28,6 +30,7 @@ export const projects = [
     title: 'PivotHack',
     subtitle: '2-day startup hackathon for youth',
     role: 'Founder',
+    date: 'Feb 2025 – Jun 2025',
     description:
       "After participating in several hackathons, I started to think about why I can't host a hackathon by myself. In the final months of high school, my friends and I founded PivotHack, a two-day startup hackathon for youth aged 14–18 in China. The event brought together 28 participants from cities including Beijing, Shanghai, Sichuan, and Shandong, along with hundreds of audience members. PivotHack was supported by leading Chinese venture capital firms and accelerators such as ZhenFund, LanChi Fund, MiraclePlus (formerly Y Combinator China), and SparkLab. Today, PivotHack continues to support young builders in China by helping them host their own hackathons and turn early ideas into real projects, while collaborating with initiatives like the Keystone Hackathon and Spark_init Project, and supporting Hackathon Playbook of AdventureX",
     cardType: 'featured-secondary',

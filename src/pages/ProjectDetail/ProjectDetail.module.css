@@ -53,6 +53,17 @@
   flex-shrink: 0;
 }
 
+.heroDate {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0;
+  margin: 0 0 0 auto;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
 .heroSubtitle {
   font-size: 20px;
   font-weight: 400;
@@ -183,6 +194,10 @@
     font-size: 18px;
   }
 
+  .heroDate {
+    font-size: 14px;
+  }
+
   .heroSubtitle {
     font-size: 18px;
   }
@@ -213,6 +228,11 @@
 
   .heroCaption {
     font-size: 16px;
+  }
+
+  .heroDate {
+    font-size: 13px;
+    margin: 0;
   }
 
   .heroSubtitle {

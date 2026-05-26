@@ -68,6 +68,7 @@ export default function ProjectDetail() {
             <div className={styles.heroTitleRow}>
               <h1 className={styles.heroTitle}>{project.title}</h1>
               <span className={styles.heroCaption}>{project.role}</span>
+              {project.date && <span className={styles.heroDate}>{project.date}</span>}
             </div>
             <h2 className={styles.heroSubtitle}>{project.subtitle}</h2>
             <div className={styles.heroText}>
