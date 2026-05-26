@@ -38,6 +38,13 @@ html, body {
   padding: 0;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  html,
+  html * {
+    cursor: none !important;
+  }
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
