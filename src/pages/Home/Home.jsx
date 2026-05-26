@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
-import { useLanguage } from '../../hooks/useLanguage'
 import { useFullpageScroll } from '../../hooks/useFullpageScroll'
-import { i18n } from '../../data/i18n'
+import { t } from '../../data/i18n'
 import Navbar from '../../components/Navbar/Navbar'
 import WordCycle from '../../components/WordCycle/WordCycle'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
@@ -15,10 +14,8 @@ const secondary = projects.find((p) => p.cardType === 'featured-secondary' && !p
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme()
-  const { lang, toggleLang } = useLanguage()
   const { currentIndex, goToSection, wrapperRef, sectionsRef } = useFullpageScroll(3)
   const location = useLocation()
-  const t = i18n[lang]
 
   useEffect(() => {
     if (location.state?.section != null) {
@@ -35,8 +32,6 @@ export default function Home() {
       <Navbar
         theme={theme}
         onToggleTheme={toggleTheme}
-        lang={lang}
-        onToggleLang={toggleLang}
         navLabels={t.nav}
         mode="home"
         activeSection={currentIndex}

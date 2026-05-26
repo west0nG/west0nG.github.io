@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
-import { useLanguage } from '../../hooks/useLanguage'
-import { i18n } from '../../data/i18n'
+import { t } from '../../data/i18n'
 import { getProjectById } from '../../data/projects'
 import Navbar from '../../components/Navbar/Navbar'
 import styles from './ProjectDetail.module.css'
@@ -41,8 +40,6 @@ const iconMap = { link: LinkIcon, github: GitHubIcon, chat: ChatIcon }
 export default function ProjectDetail() {
   const { id } = useParams()
   const { theme, toggleTheme } = useTheme()
-  const { lang, toggleLang } = useLanguage()
-  const t = i18n[lang]
   const project = getProjectById(id)
 
   useEffect(() => {
@@ -63,7 +60,7 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <Navbar theme={theme} onToggleTheme={toggleTheme} lang={lang} onToggleLang={toggleLang} navLabels={t.nav} mode="detail" />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} navLabels={t.nav} mode="detail" />
 
       <div className={styles.page}>
         <div className={styles.section}>

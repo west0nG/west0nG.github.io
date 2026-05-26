@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useTheme } from '../../hooks/useTheme'
-import { useLanguage } from '../../hooks/useLanguage'
-import { i18n } from '../../data/i18n'
+import { t } from '../../data/i18n'
 import { projects } from '../../data/projects'
 import Navbar from '../../components/Navbar/Navbar'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
@@ -11,8 +10,6 @@ const archived = projects.filter((p) => p.archived)
 
 export default function Archive() {
   const { theme, toggleTheme } = useTheme()
-  const { lang, toggleLang } = useLanguage()
-  const t = i18n[lang]
 
   useEffect(() => {
     document.title = `Archive - Weston Guo`
@@ -25,7 +22,7 @@ export default function Archive() {
 
   return (
     <>
-      <Navbar theme={theme} onToggleTheme={toggleTheme} lang={lang} onToggleLang={toggleLang} navLabels={t.nav} mode="detail" />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} navLabels={t.nav} mode="detail" />
 
       <div className={styles.page}>
         <div className={styles.container}>
