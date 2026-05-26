@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react'
 import styles from './ThemeToggle.module.css'
 
 function SunIcon() {
@@ -24,10 +25,75 @@ function MoonIcon() {
   )
 }
 
-export default function ThemeToggle({ theme, onToggle }) {
+// Easter egg messages — shown when the user clicks the theme toggle inside
+// the archive. The archive is locked to brown on purpose, so we wink instead
+// of switching themes. Messages escalate with each repeat click.
+const eggMessages = [
+  "it doesn't work in the archive — feature, not bug",
+  "still doesn't. still a feature.",
+  "the archive's committed to its patina ☕",
+  "ok, you're persistent. still no.",
+  "wow, real commitment. respect. still no.",
+]
+
+const HIDE_AFTER = 3800
+const SWAP_FADE = 150
+
+export default function ThemeToggle({ theme, onToggle, archive = false }) {
+  const [visible, setVisible] = useState(false)
+  const [text, setText] = useState('')
+  const [fading, setFading] = useState(false)
+  const indexRef = useRef(0)
+  const hideTimerRef = useRef(null)
+  const swapTimerRef = useRef(null)
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(hideTimerRef.current)
+      clearTimeout(swapTimerRef.current)
+    }
+  }, [])
+
+  const handleClick = () => {
+    if (!archive) {
+      onToggle()
+      return
+    }
+
+    clearTimeout(hideTimerRef.current)
+    clearTimeout(swapTimerRef.current)
+
+    if (!visible) {
+      setText(eggMessages[0])
+      indexRef.current = 1
+      setVisible(true)
+    } else {
+      // Cross-fade to the next message: fade out current, swap text, fade in.
+      setFading(true)
+      swapTimerRef.current = setTimeout(() => {
+        setText(eggMessages[indexRef.current % eggMessages.length])
+        indexRef.current = (indexRef.current + 1) % eggMessages.length
+        setFading(false)
+      }, SWAP_FADE)
+    }
+
+    hideTimerRef.current = setTimeout(() => {
+      setVisible(false)
+      indexRef.current = 0
+    }, HIDE_AFTER)
+  }
+
   return (
-    <button className={styles.toggle} onClick={onToggle} aria-label="Toggle dark mode">
-      {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
-    </button>
+    <div className={styles.wrapper}>
+      <span
+        className={`${styles.egg} ${visible ? styles.eggVisible : ''} ${fading ? styles.eggFading : ''}`}
+        aria-live="polite"
+      >
+        {text}
+      </span>
+      <button className={styles.toggle} onClick={handleClick} aria-label="Toggle dark mode">
+        {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
+      </button>
+    </div>
   )
 }

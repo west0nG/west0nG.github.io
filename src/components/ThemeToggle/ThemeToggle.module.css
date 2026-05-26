@@ -1,7 +1,12 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .toggle {
   background: transparent;
   border: none;
-  margin-left: auto;
   cursor: pointer;
   color: inherit;
   padding: 0;
@@ -18,4 +23,47 @@
 
 .toggle:hover {
   opacity: 0.6;
+}
+
+.egg {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(8px) scale(0.97);
+  filter: blur(0.6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+}
+
+.eggVisible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: blur(0);
+}
+
+.eggFading {
+  opacity: 0.3;
+  transform: translateY(-0.06em) scale(0.97);
+  filter: blur(0.8px);
+}
+
+@media (max-width: 768px) {
+  .egg {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .egg {
+    /* On very narrow screens the message would push the nav off-screen.
+       Keep it short or let it wrap onto its own line above. */
+    font-size: 10px;
+    max-width: 60vw;
+    white-space: normal;
+    text-align: right;
+    line-height: 1.2;
+  }
 }

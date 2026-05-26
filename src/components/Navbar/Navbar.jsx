@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import styles from './Navbar.module.css'
 
-export default function Navbar({ theme, onToggleTheme, navLabels, mode = 'home', activeSection, onNavClick }) {
+export default function Navbar({ theme, onToggleTheme, navLabels, mode = 'home', activeSection, onNavClick, archive = false }) {
   if (mode === 'detail') {
     return (
       <nav className={styles.nav}>
@@ -10,7 +10,7 @@ export default function Navbar({ theme, onToggleTheme, navLabels, mode = 'home',
           <div className={styles.navContainer}>
             <Link to="/" state={{ section: 1 }} className={styles.navButton}>{navLabels.back}</Link>
             <div className={styles.navRight}>
-              <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+              <ThemeToggle theme={theme} onToggle={onToggleTheme} archive={archive} />
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function Navbar({ theme, onToggleTheme, navLabels, mode = 'home',
             </button>
           ))}
           <div className={styles.navRight}>
-            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} archive={archive} />
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <Navbar theme={theme} onToggleTheme={toggleTheme} navLabels={t.nav} mode="detail" />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} navLabels={t.nav} mode="detail" archive={!!project.archived} />
 
       <div className={styles.page}>
         <div className={styles.section}>

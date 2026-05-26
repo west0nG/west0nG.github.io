@@ -22,7 +22,7 @@ export default function Archive() {
 
   return (
     <>
-      <Navbar theme={theme} onToggleTheme={toggleTheme} navLabels={t.nav} mode="detail" />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} navLabels={t.nav} mode="detail" archive />
 
       <div className={styles.page}>
         <div className={styles.container}>
