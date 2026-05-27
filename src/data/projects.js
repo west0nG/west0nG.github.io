@@ -5,11 +5,14 @@ export const projects = [
     subtitle: 'Agents as Founders',
     role: 'Founder',
     date: 'Mar 2026 – Present',
-    description: 'Coming soon.',
+    description:
+      'At Foundagent, we believe that in the future world, agents will become founders building and shipping actual products and services. Agents will autonomously discover needs, build products, ship and sell, and generate returns for people. We have incubated our first batch of AI founders, stay tuned.',
     cardType: 'featured',
     image: '/assets/hackerhouse.webp',
     overlay: '/assets/foundagent-wordmark.svg',
-    links: [],
+    links: [
+      { label: 'Foundagent Website', url: 'https://foundagent.net', icon: 'link' },
+    ],
   },
   {
     id: 'modcraft',
