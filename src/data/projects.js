@@ -79,6 +79,36 @@ export const projects = [
     image: '/assets/punky.png',
     links: [],
   },
+  {
+    id: 'placeholder-1',
+    title: 'Untitled',
+    subtitle: 'Coming soon',
+    role: 'TBD',
+    description: 'Coming soon.',
+    cardType: 'normal',
+    archived: true,
+    links: [],
+  },
+  {
+    id: 'placeholder-2',
+    title: 'Untitled',
+    subtitle: 'Coming soon',
+    role: 'TBD',
+    description: 'Coming soon.',
+    cardType: 'normal',
+    archived: true,
+    links: [],
+  },
+  {
+    id: 'placeholder-3',
+    title: 'Untitled',
+    subtitle: 'Coming soon',
+    role: 'TBD',
+    description: 'Coming soon.',
+    cardType: 'normal',
+    archived: true,
+    links: [],
+  },
 ]
 
 export function getProjectById(id) {
