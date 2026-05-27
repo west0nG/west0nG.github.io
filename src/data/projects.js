@@ -18,7 +18,7 @@ export const projects = [
     role: 'Co-Founder',
     date: 'Dec 2025 – Apr 2026',
     description:
-      'ModCraft turns natural language Minecraft mod ideas into fully playable game mods. Let everyone create their own mods in 5 minutes without coding.',
+      'ModCraft is an agentic no-code IDE for Minecraft mod creation, allowing users to turn natural language mod ideas into playable mods, creating a Minecraft mod in five minutes without any coding experience.',
     cardType: 'featured',
     image: '/assets/modcraft.png',
     links: [
