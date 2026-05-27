@@ -27,6 +27,7 @@ export default function Archive() {
       <div className={styles.page}>
         <div className={styles.container}>
           <h1 className={styles.heading}>{t.archiveTitle}</h1>
+          <p className={styles.subtitle}>{t.archiveSubtitle}</p>
           <div className={styles.gridGap} />
           <div className={styles.grid}>
             {archived.map((p) => (

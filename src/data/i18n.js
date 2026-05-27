@@ -9,6 +9,7 @@ export const t = {
   archiveButtonTitle: 'Archive',
   archiveButtonSubtitle: 'Earlier projects',
   archiveTitle: 'Archive',
+  archiveSubtitle: 'These are some small projects I worked on for fun in my spare time or during hackathons.',
   footer: '© 2026 Weston Guo. All rights reserved.',
   nav: {
     about: 'About',

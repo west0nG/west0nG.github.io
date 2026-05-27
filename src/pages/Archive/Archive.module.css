@@ -22,6 +22,16 @@
   margin: 0;
 }
 
+.subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: -0.02em;
+  margin: 6px 0 0;
+  line-height: 1.5;
+  max-width: 640px;
+}
+
 .gridGap {
   height: 16px;
 }
@@ -42,6 +52,10 @@
     font-size: 18px;
   }
 
+  .subtitle {
+    font-size: 13px;
+  }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -54,6 +68,10 @@
 
   .heading {
     font-size: 16px;
+  }
+
+  .subtitle {
+    font-size: 12px;
   }
 
   .grid {
