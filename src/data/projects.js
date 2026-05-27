@@ -117,6 +117,7 @@ export const projects = [
       "We built this project during a hackathon focused on AI + education. We discovered that many elementary and middle school students with learning challenges—often related to ADHD or dyslexia—face social exclusion and struggle to learn effectively.\n\nTo address this, we built a learning management system that helps teachers diagnose these students' needs and create tailored learning materials for them.",
     cardType: 'normal',
     archived: true,
+    image: '/assets/invisaid.webp',
     links: [
       { label: 'InvisAId Deck', url: 'https://canva.link/dw28bjfrnotqoj9', icon: 'link' },
     ],
