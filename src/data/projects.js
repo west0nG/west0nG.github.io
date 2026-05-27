@@ -87,30 +87,39 @@ export const projects = [
     title: 'ClaudeWechat',
     subtitle: 'Claude plugins that help you operate WeChat automatically',
     role: 'Creator',
-    description: 'Claude plugins that help you operate WeChat automatically.',
+    description:
+      'After Claude Code released the Computer Use MCP, I discovered that Claude could autonomously operate WeChat to send messages to others. However, the efficiency was low and it was prone to errors.\n\nTo address this, I wrote a simple skill that helps Claude understand the WeChat layout faster and operate the desktop app more reliably.',
     cardType: 'normal',
     archived: true,
-    links: [],
+    links: [
+      { label: 'ClaudeWechat Github Repo', url: 'https://github.com/west0nG/ClaudeWechat', icon: 'github' },
+    ],
   },
   {
     id: 'claudebrightspace',
     title: 'ClaudeBrightspace',
     subtitle: 'Claude plugins that help USC students operate Brightspace',
     role: 'Creator',
-    description: 'Claude plugins that help USC students operate Brightspace.',
+    description:
+      "USC uses Brightspace as its learning management system, but the system feels dated. It has many usability issues and poorly designed UI elements. Interacting with it—whether to submit assignments, download files, or check requirements—takes a significant amount of time.\n\nTo solve this, I built a Claude skill that automatically accesses the context within Brightspace to download assignments, submit completed work, and manage related course tasks. It has saved me a lot of time and is now widely used by my classmates.",
     cardType: 'normal',
     archived: true,
-    links: [],
+    links: [
+      { label: 'ClaudeBrightspace Github Repo', url: 'https://github.com/west0nG/ClaudeBrightspace', icon: 'github' },
+    ],
   },
   {
     id: 'invisaid',
     title: 'InvisAId',
     subtitle: 'Learning Management System for ADHD students',
-    role: 'Creator',
-    description: 'Learning Management System for ADHD students.',
+    role: 'Product Manager',
+    description:
+      "We built this project during a hackathon focused on AI + education. We discovered that many elementary and middle school students with learning challenges—often related to ADHD or dyslexia—face social exclusion and struggle to learn effectively.\n\nTo address this, we built a learning management system that helps teachers diagnose these students' needs and create tailored learning materials for them.",
     cardType: 'normal',
     archived: true,
-    links: [],
+    links: [
+      { label: 'InvisAId Deck', url: 'https://canva.link/dw28bjfrnotqoj9', icon: 'link' },
+    ],
   },
 ]
 
